@@ -1,0 +1,6 @@
+{
+  "name": "Kỹ năng Đội HHTer",
+  "description": "Ứng dụng học tập, rèn luyện tương tác kỹ năng truyền tin Morse, Semaphore và Dấu đường dành cho Đội viên.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
