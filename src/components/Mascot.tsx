@@ -149,80 +149,76 @@ export default function Mascot({
         </g>
 
         {/* --- LEFT ARM & FLAG (Semaphore) --- */}
-        {/* Left shoulder is at x=75, y=110. Let's translate there and rotate. */}
-        <motion.g
-          id="left-arm-group"
-          animate={{ rotate: leftAngle }}
-          initial={{ rotate: leftAngle }}
-          transition={isAnimated ? { type: "spring", stiffness: 80, damping: 15 } : { duration: 0 }}
-          style={{ originX: "75px", originY: "110px" }}
-        >
-          {/* Left sleeve */}
-          <path d="M 75 104 L 56 112 L 60 123 L 75 116 Z" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2" />
-          {/* Left arm bone pointing straight "UP" relative to rotation.
-              We want the arm to extend downwards in local coordinate so rotation aligns.
-              Wait! If rotation 0 means straight UP, then in the SVG when arm-angle is 0,
-              it extends towards -Y (UP).
-              Let's draw arm pointing straight UP in local coordinates relative to (75, 110).
-              Shoulder is (75,110), so hand is at (75, 70) if pointing UP.
-              Let's draw from (75,110) to (75, 70).
-              In SVG local space (translated to 75,110), arm goes from (0,0) to (0, -40).
-          */}
-          {/* Flesh arm */}
-          <line x1="0" y1="0" x2="0" y2="-45" stroke="#ffe0bd" strokeWidth="8" strokeLinecap="round" transform="translate(75, 110)" />
-          {/* Arm outline */}
-          <line x1="0" y1="0" x2="0" y2="-45" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" transform="translate(75, 110)" />
-          
-          {/* Flag stick extending further from hand (0, -45) to (0, -85) */}
-          <line x1="0" y1="-45" x2="0" y2="-90" stroke="#d9af62" strokeWidth="4.5" strokeLinecap="round" transform="translate(75, 110)" />
-          
-          {/* Semaphore Flag banner at (0, -90). Square banner size 26x26.
-              Flag has two diagonal triangles: bottom-left/top-right.
-              One half is red (#e74c3c), outer is yellow (#f1c40f).
-          */}
-          <g transform="translate(75, 110) translate(0, -90)">
-            {/* Yellow Triangle */}
-            <path d="M 0 0 L 26 -26 L 0 -26 Z" fill="#f1c40f" stroke="#2c3e50" strokeWidth="1" />
-            {/* Red Triangle */}
-            <path d="M 0 0 L 26 -26 L 26 0 Z" fill="#e74c3c" stroke="#2c3e50" strokeWidth="1" />
-            {/* Tiny tie knots */}
-            <circle cx="0" cy="0" r="2.5" fill="#2c3e50" />
-            <circle cx="0" cy="-26" r="2.5" fill="#2c3e50" />
-          </g>
-        </motion.g>
+        {/* Left shoulder pivot at (76, 108) */}
+        <g transform="translate(76, 108)">
+          <motion.g
+            id="left-arm-group"
+            animate={{ rotate: leftAngle }}
+            initial={{ rotate: leftAngle }}
+            transition={isAnimated ? { type: "spring", stiffness: 90, damping: 16 } : { duration: 0 }}
+            style={{ transformOrigin: "0px 0px" }}
+          >
+            {/* Flesh arm pointing UP in local space (from (0,0) to (0,-46)) */}
+            <line x1="0" y1="0" x2="0" y2="-46" stroke="#ffe0bd" strokeWidth="9" strokeLinecap="round" />
+            <line x1="0" y1="0" x2="0" y2="-46" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
+
+            {/* White shirt sleeve around upper arm from (0,0) to (0,-20) */}
+            <line x1="0" y1="0" x2="0" y2="-20" stroke="#fcfcfc" strokeWidth="13" strokeLinecap="round" />
+            <line x1="0" y1="0" x2="0" y2="-20" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
+            {/* Shoulder joint cap seamlessly attaching arm to torso */}
+            <circle cx="0" cy="0" r="7" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2" />
+
+            {/* Flag stick extending further from hand (0, -46) to (0, -90) */}
+            <line x1="0" y1="-46" x2="0" y2="-90" stroke="#d9af62" strokeWidth="4.5" strokeLinecap="round" />
+
+            {/* Semaphore Flag banner at (0, -90). Square banner size 28x28 */}
+            <g transform="translate(0, -90)">
+              {/* Yellow Triangle */}
+              <path d="M 0 0 L 28 -28 L 0 -28 Z" fill="#f1c40f" stroke="#2c3e50" strokeWidth="1.5" />
+              {/* Red Triangle */}
+              <path d="M 0 0 L 28 -28 L 28 0 Z" fill="#e74c3c" stroke="#2c3e50" strokeWidth="1.5" />
+              {/* Tie knots */}
+              <circle cx="0" cy="0" r="2.5" fill="#2c3e50" />
+              <circle cx="0" cy="-28" r="2.5" fill="#2c3e50" />
+            </g>
+          </motion.g>
+        </g>
 
         {/* --- RIGHT ARM & FLAG (Semaphore) --- */}
-        {/* Right shoulder is at x=125, y=110. Let's translate there and rotate. */}
-        <motion.g
-          id="right-arm-group"
-          animate={{ rotate: rightAngle }}
-          initial={{ rotate: rightAngle }}
-          transition={isAnimated ? { type: "spring", stiffness: 80, damping: 15 } : { duration: 0 }}
-          style={{ originX: "125px", originY: "110px" }}
-        >
-          {/* Right sleeve */}
-          <path d="M 125 104 L 144 112 L 140 123 L 125 116 Z" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2" />
-          
-          {/* Flesh arm pointing UP in local coordinates relative to (125, 110). */}
-          <line x1="0" y1="0" x2="0" y2="-45" stroke="#ffe0bd" strokeWidth="8" strokeLinecap="round" transform="translate(125, 110)" />
-          <line x1="0" y1="0" x2="0" y2="-45" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" transform="translate(125, 110)" />
-          
-          {/* Flag stick extending further from hand (0, -45) to (0, -90) */}
-          <line x1="0" y1="-45" x2="0" y2="-90" stroke="#d9af62" strokeWidth="4.5" strokeLinecap="round" transform="translate(125, 110)" />
-          
-          {/* Semaphore Flag banner at (0, -90). Square banner size 26x26.
-              For symmetry, right hand flag expands to the right or left. Let's expand to the right as well.
-          */}
-          <g transform="translate(125, 110) translate(0, -90)">
-            {/* Yellow Triangle */}
-            <path d="M 0 0 L -26 -26 L 0 -26 Z" fill="#f1c40f" stroke="#2c3e50" strokeWidth="1" />
-            {/* Red Triangle */}
-            <path d="M 0 0 L -26 -26 L -26 0 Z" fill="#e74c3c" stroke="#2c3e50" strokeWidth="1" />
-            {/* Tiny tie knots */}
-            <circle cx="0" cy="0" r="2.5" fill="#2c3e50" />
-            <circle cx="0" cy="-26" r="2.5" fill="#2c3e50" />
-          </g>
-        </motion.g>
+        {/* Right shoulder pivot at (124, 108) */}
+        <g transform="translate(124, 108)">
+          <motion.g
+            id="right-arm-group"
+            animate={{ rotate: rightAngle }}
+            initial={{ rotate: rightAngle }}
+            transition={isAnimated ? { type: "spring", stiffness: 90, damping: 16 } : { duration: 0 }}
+            style={{ transformOrigin: "0px 0px" }}
+          >
+            {/* Flesh arm pointing UP in local space (from (0,0) to (0,-46)) */}
+            <line x1="0" y1="0" x2="0" y2="-46" stroke="#ffe0bd" strokeWidth="9" strokeLinecap="round" />
+            <line x1="0" y1="0" x2="0" y2="-46" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
+
+            {/* White shirt sleeve around upper arm from (0,0) to (0,-20) */}
+            <line x1="0" y1="0" x2="0" y2="-20" stroke="#fcfcfc" strokeWidth="13" strokeLinecap="round" />
+            <line x1="0" y1="0" x2="0" y2="-20" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
+            {/* Shoulder joint cap seamlessly attaching arm to torso */}
+            <circle cx="0" cy="0" r="7" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2" />
+
+            {/* Flag stick extending further from hand (0, -46) to (0, -90) */}
+            <line x1="0" y1="-46" x2="0" y2="-90" stroke="#d9af62" strokeWidth="4.5" strokeLinecap="round" />
+
+            {/* Semaphore Flag banner at (0, -90). Square banner size 28x28 */}
+            <g transform="translate(0, -90)">
+              {/* Yellow Triangle */}
+              <path d="M 0 0 L -28 -28 L 0 -28 Z" fill="#f1c40f" stroke="#2c3e50" strokeWidth="1.5" />
+              {/* Red Triangle */}
+              <path d="M 0 0 L -28 -28 L -28 0 Z" fill="#e74c3c" stroke="#2c3e50" strokeWidth="1.5" />
+              {/* Tie knots */}
+              <circle cx="0" cy="0" r="2.5" fill="#2c3e50" />
+              <circle cx="0" cy="-28" r="2.5" fill="#2c3e50" />
+            </g>
+          </motion.g>
+        </g>
       </svg>
     </div>
   );
