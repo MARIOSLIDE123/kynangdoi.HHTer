@@ -1,15 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { BookOpen, ExternalLink, Sparkles, Award } from 'lucide-react';
+import { BookOpen, ExternalLink } from 'lucide-react';
 import { NGHI_THUC_REFERENCES, NghiThucRefArticle } from '../data/nghiThucDoi';
 import { playClickSound } from '../utils/audio';
 
 export default function NghiThucDoiTheory() {
-  const handleOpenLink = (url: string) => {
-    playClickSound();
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className="space-y-6">
       {/* Header Banner */}
@@ -32,13 +27,16 @@ export default function NghiThucDoiTheory() {
       {/* Grid of 8 Reference Articles */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4.5">
         {NGHI_THUC_REFERENCES.map((item: NghiThucRefArticle, idx: number) => (
-          <motion.div
+          <motion.a
             key={item.id}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.05 }}
-            onClick={() => handleOpenLink(item.link)}
-            className="bg-white/95 backdrop-blur-md rounded-3xl p-5 md:p-6 border-4 border-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer group relative overflow-hidden"
+            onClick={() => playClickSound()}
+            className="bg-white/95 backdrop-blur-md rounded-3xl p-5 md:p-6 border-4 border-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer group relative overflow-hidden block no-underline"
           >
             {/* Top Tag & Icon */}
             <div>
@@ -72,7 +70,7 @@ export default function NghiThucDoiTheory() {
                 muctim.tuoitre.vn ↗
               </span>
             </div>
-          </motion.div>
+          </motion.a>
         ))}
       </div>
     </div>
