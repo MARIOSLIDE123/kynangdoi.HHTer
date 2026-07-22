@@ -87,12 +87,12 @@ export default function Mascot({
         {/* --- MAIN BODY / TORSO --- */}
         <g id="body">
           {/* Short blue uniform pants */}
-          <path d="M 78 150 H 122 V 172 H 108 V 166 H 92 V 172 H 78 Z" fill="#2980b9" stroke="#2c3e50" strokeWidth="2.5" />
-          {/* White Cadet uniform shirt */}
-          <path d="M 78 100 H 122 V 154 H 78 Z" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2.5" />
-          {/* Dark blue shoulders stripes */}
-          <rect x="78" y="100" width="10" height="6" fill="#2980b9" />
-          <rect x="112" y="100" width="10" height="6" fill="#2980b9" />
+          <path d="M 76 148 H 124 V 172 H 108 V 166 H 92 V 172 H 76 Z" fill="#2980b9" stroke="#2c3e50" strokeWidth="2.5" />
+          {/* White Cadet uniform shirt with curved shoulder seams */}
+          <path d="M 88 100 Q 78 100 72 108 L 76 154 H 124 L 128 108 Q 122 100 112 100 Z" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2.5" />
+          {/* Dark blue shoulder epaulets */}
+          <path d="M 72 108 C 72 102 82 100 86 100" stroke="#2980b9" strokeWidth="4" strokeLinecap="round" />
+          <path d="M 128 108 C 128 102 118 100 114 100" stroke="#2980b9" strokeWidth="4" strokeLinecap="round" />
           {/* Yellow Union Badge on chest */}
           <circle cx="88" cy="118" r="4.5" fill="#f1c40f" />
           <polygon points="88,115 89,117 91,118 89,119 88,121 87,119 85,118 87,117" fill="#e74c3c" />
@@ -149,8 +149,8 @@ export default function Mascot({
         </g>
 
         {/* --- LEFT ARM & FLAG (Semaphore) --- */}
-        {/* Left shoulder pivot at (76, 108) */}
-        <g transform="translate(76, 108)">
+        {/* Left shoulder pivot at (72, 108) */}
+        <g transform="translate(72, 108)">
           <motion.g
             id="left-arm-group"
             animate={{ rotate: leftAngle }}
@@ -162,11 +162,11 @@ export default function Mascot({
             <line x1="0" y1="0" x2="0" y2="-46" stroke="#ffe0bd" strokeWidth="9" strokeLinecap="round" />
             <line x1="0" y1="0" x2="0" y2="-46" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
 
-            {/* White shirt sleeve around upper arm from (0,0) to (0,-20) */}
-            <line x1="0" y1="0" x2="0" y2="-20" stroke="#fcfcfc" strokeWidth="13" strokeLinecap="round" />
-            <line x1="0" y1="0" x2="0" y2="-20" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
+            {/* White shirt sleeve around upper arm from (0,0) to (0,-22) */}
+            <line x1="0" y1="0" x2="0" y2="-22" stroke="#fcfcfc" strokeWidth="13" strokeLinecap="round" />
+            <line x1="0" y1="0" x2="0" y2="-22" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
             {/* Shoulder joint cap seamlessly attaching arm to torso */}
-            <circle cx="0" cy="0" r="7" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2" />
+            <circle cx="0" cy="0" r="7.5" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2" />
 
             {/* Flag stick extending further from hand (0, -46) to (0, -90) */}
             <line x1="0" y1="-46" x2="0" y2="-90" stroke="#d9af62" strokeWidth="4.5" strokeLinecap="round" />
@@ -185,8 +185,8 @@ export default function Mascot({
         </g>
 
         {/* --- RIGHT ARM & FLAG (Semaphore) --- */}
-        {/* Right shoulder pivot at (124, 108) */}
-        <g transform="translate(124, 108)">
+        {/* Right shoulder pivot at (128, 108) */}
+        <g transform="translate(128, 108)">
           <motion.g
             id="right-arm-group"
             animate={{ rotate: rightAngle }}
@@ -198,11 +198,11 @@ export default function Mascot({
             <line x1="0" y1="0" x2="0" y2="-46" stroke="#ffe0bd" strokeWidth="9" strokeLinecap="round" />
             <line x1="0" y1="0" x2="0" y2="-46" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
 
-            {/* White shirt sleeve around upper arm from (0,0) to (0,-20) */}
-            <line x1="0" y1="0" x2="0" y2="-20" stroke="#fcfcfc" strokeWidth="13" strokeLinecap="round" />
-            <line x1="0" y1="0" x2="0" y2="-20" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
+            {/* White shirt sleeve around upper arm from (0,0) to (0,-22) */}
+            <line x1="0" y1="0" x2="0" y2="-22" stroke="#fcfcfc" strokeWidth="13" strokeLinecap="round" />
+            <line x1="0" y1="0" x2="0" y2="-22" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" />
             {/* Shoulder joint cap seamlessly attaching arm to torso */}
-            <circle cx="0" cy="0" r="7" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2" />
+            <circle cx="0" cy="0" r="7.5" fill="#fcfcfc" stroke="#2c3e50" strokeWidth="2" />
 
             {/* Flag stick extending further from hand (0, -46) to (0, -90) */}
             <line x1="0" y1="-46" x2="0" y2="-90" stroke="#d9af62" strokeWidth="4.5" strokeLinecap="round" />
