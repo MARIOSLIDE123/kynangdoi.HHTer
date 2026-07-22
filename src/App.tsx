@@ -35,9 +35,7 @@ import { TRAIL_SIGNS } from './data/trailSigns';
 import { QUIZ_QUESTIONS, PRACTICE_EXERCISES_MORSE, PRACTICE_EXERCISES_SEMAPHORE, PRACTICE_EXERCISES_DAU_DUONG } from './data/questions';
 
 import { CHALLENGES_LIST, ChallengeItem } from './data/challenges';
-import { REN_LUYEN_DOI_VIEN_BADGES } from './data/renLuyenDoiVien';
 import NghiThucDoiTheory from './components/NghiThucDoiTheory';
-import RenLuyenDoiVienTab from './components/RenLuyenDoiVienTab';
 import MiniGames from './components/MiniGames';
 
 import ScenicBackground from './components/ScenicBackground';
@@ -528,7 +526,6 @@ export default function App() {
               { id: 'home', label: 'Trang chủ', icon: Home, color: 'bg-emerald-500 border-emerald-700' },
               { id: 'theory', label: 'Học lý thuyết', icon: BookOpen, color: 'bg-blue-500 border-blue-700' },
               { id: 'practice', label: 'Luyện tập', icon: Compass, color: 'bg-orange-500 border-orange-700' },
-              { id: 'badge_training', label: 'Rèn luyện Đội', icon: Award, color: 'bg-teal-550 border-teal-750' },
               { id: 'tournament', label: 'Thi đấu', icon: Trophy, color: 'bg-yellow-500 border-yellow-600' },
               { id: 'achievements', label: 'Thành tích', icon: Award, color: 'bg-purple-500 border-purple-700' },
               { id: 'profile', label: 'Hồ sơ', icon: User, color: 'bg-pink-500 border-pink-700' },
@@ -1459,19 +1456,7 @@ export default function App() {
             </motion.div>
           )}
 
-          {/* ========================================================= */}
-          {/* TAB: RÈN LUYỆN ĐỘI (Badge Training Program) */}
-          {/* ========================================================= */}
-          {activeTab === 'badge_training' && user && (
-            <motion.div
-              key="badge_training"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-            >
-              <RenLuyenDoiVienTab user={user} saveUserProfile={saveUserProfile} addReward={addReward} />
-            </motion.div>
-          )}
+
 
           {/* ========================================================= */}
           {/* TAB 4: THI ĐẤU (High stakes countdown quiz) */}
